@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         ParseUser user=new ParseUser();
-
+        user.setUsername("Selam");
 
     }
 }
