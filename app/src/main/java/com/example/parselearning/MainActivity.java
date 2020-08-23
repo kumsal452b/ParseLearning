@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 
 import java.util.List;
 
@@ -52,7 +54,30 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         ParseUser user=new ParseUser();
-        user.setUsername("Selam");
+//        user.setUsername("Kumsal");
+//        user.setPassword("123456");
+//        user.signUpInBackground(new SignUpCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e!=null){
+//                    e.fillInStackTrace();
+//                }
+//                else{
+//                    Toast.makeText(MainActivity.this,"Sign Up",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+        ParseUser.logInInBackground("Kumsal", "123456", new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e!=null){
+                    e.fillInStackTrace();
+                }else{
+                    Toast.makeText(MainActivity.this,"Welcome: "+user.getUsername(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
 
     }
 }
